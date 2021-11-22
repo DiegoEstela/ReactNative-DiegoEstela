@@ -4,7 +4,7 @@ import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import { StyleSheet, Text, View } from "react-native";
 import Header from "./components/Header";
-import Login from './components/Login';
+import AppNavigator from './navigation/AppNavigator';
 
 
 
@@ -20,7 +20,7 @@ const App: FC = () => {
   return (
     <View style={styles.container}>
       <Header title="EcoTu" />
-      <Login />
+      <AppNavigator />
     </View>
   );
 }
