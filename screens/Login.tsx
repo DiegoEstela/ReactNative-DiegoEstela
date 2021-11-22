@@ -6,7 +6,7 @@ import Searchcomponent from './Search'
 
 
 
-const Login = () => {
+const Login = ({ navigation, route }) => {
 
   const [usuario, setUsuario] = useState({
     nombre: '',
@@ -16,7 +16,6 @@ const Login = () => {
 
   });
   const [usuarioConfirmed, setUsuarioConfirmed] = useState("");
-
   const handleChange = (text: string, campo: string) => {
     setUsuario({
       ...usuario,
@@ -28,35 +27,26 @@ const Login = () => {
 
     setUsuarioConfirmed(usuario);
     console.log(usuarioConfirmed);
-
+    navigation.navigate("Home")
   }
-  const confirmedOutput = usuarioConfirmed ? <Searchcomponent /> : (
-    <View style={styles.login} >
-      <TextInput placeholder="Nombre" onChangeText={(text) => handleChange(text, "nombre")} value='' />
-      <TextInput placeholder="Apellido" onChangeText={(text) => handleChange(text, "apellido")} />
-      <TextInput placeholder="Email" onChangeText={(text) => handleChange(text, "email")} />
-      <TextInput placeholder="Contrasena" secureTextEntry={true} onChangeText={(text) => handleChange(text, "contrasena")} />
-
-    </View>
-  );
-
-
+ 
   return (
-    <>
-      {confirmedOutput}
-      {usuarioConfirmed ? (<TouchableOpacity
-        style={styles.buttonClose}
-        onPress={() => setUsuarioConfirmed("")}
-
-      >
-        <Text>Cerrar Sesion</Text>
-      </TouchableOpacity>) : (
+  
+    <View style={styles.login} >
+      <TextInput style={styles.input} placeholder="Nombre" onChangeText={(text) => handleChange(text, "nombre")}  />
+      <TextInput style={styles.input} placeholder="Apellido" onChangeText={(text) => handleChange(text, "apellido")} />
+      <TextInput style={styles.input} placeholder="Email" onChangeText={(text) => handleChange(text, "email")} />
+      <TextInput style={styles.input} placeholder="Contrasena" secureTextEntry={true} onChangeText={(text) => handleChange(text, "contrasena")} />
+       
         <TouchableOpacity onPress={handleSubmit} style={styles.buttonClose}>
-          <Text>Registrar</Text>
-        </TouchableOpacity>)}
-
-    </>
+        <Text>Registrar</Text>
+        </TouchableOpacity>
+    </View>
+     
+     
   )
+
+
 
 }
 
@@ -68,7 +58,13 @@ const styles = StyleSheet.create({
     marginTop: 50,
     marginLeft: 20,
     marginRight: 20,
-
+    
+  },
+  input:{
+    backgroundColor: "#e6e6fa",
+    padding: 5,
+    borderRadius: 5,
+    marginBottom: 15,
 
   },
   buttonClose: {
