@@ -1,25 +1,40 @@
 import React, { FC } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import { StyleSheet, Platform } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import colors from '../constants/colors';
+
 
 import Maps from '../screens/Maps';
 import Search from '../screens/Search';
-import Login from '../screens/Login';
 import Home from '../screens/Home';
+
 
 const Stack = createNativeStackNavigator();
 
 const AppNavigator: FC = () => {
     return (
-        <NavigationContainer>
-            <Stack.Navigator initialRouteName='Home'>
-                <Stack.Screen name='Home' component={Home} />
-                <Stack.Screen name="Login" component={Login} />
-                <Stack.Screen name="Maps" component={Maps} />
-                <Stack.Screen name="Search" component={Search} />
-            </Stack.Navigator>
-        </NavigationContainer>
+        <Stack.Navigator
+            screenOptions={{
+                headerStyle: styles.header,
+                headerTintColor: Platform.OS === 'android' ? "white" : colors.primary
+            }}
+            initialRouteName='Home'>
+            <Stack.Screen name='Home' component={Home} />
+
+            <Stack.Screen
+                name="Maps"
+                component={Maps}
+
+            />
+            <Stack.Screen name="Search" component={Search} />
+        </Stack.Navigator>
     );
 }
+
+const styles = StyleSheet.create({
+    header: {
+        backgroundColor: Platform.OS === 'android' ? colors.primary : colors.accents,
+    }
+})
 
 export default AppNavigator;

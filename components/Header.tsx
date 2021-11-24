@@ -14,7 +14,7 @@ const Header = ({ title }) => {
 const styles = StyleSheet.create({
     header: {
         backgroundColor: colors.primary,
-        paddingTop: 40,
+        paddingTop: 20,
         textAlign: "center",
         color: "white",
 
@@ -24,7 +24,6 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         fontSize: 25,
         paddingTop: 15,
-        paddingBottom: 15,
         fontFamily: "roboto",
         textAlign: "center",
         flexDirection: "row",
