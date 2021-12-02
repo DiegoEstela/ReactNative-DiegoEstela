@@ -1,13 +1,18 @@
 import React, { FC } from "react";
-import { Text, View, StyleSheet, Button, TouchableOpacity } from "react-native";
+import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import colors from "../constants/colors";
+import { useSelector } from "react-redux";
 
 
 const Home: FC = ({ navigation, route }) => {
-
+    const user = useSelector(state => state.user.value);
     return (
         <View style={styles.container}>
-
+            {user.nombre ?
+                <Text style={styles.cartHomeUser} > Bienvenido: {user.nombre}</Text>
+                : <TouchableOpacity style={styles.cartHome}>
+                    <Text style={styles.cartText} > Ingresa con tu usuario</Text>
+                </TouchableOpacity>}
             <TouchableOpacity style={styles.cartHome} onPress={() => navigation.navigate("Maps")}>
                 <Text style={styles.cartText} > Map</Text>
             </TouchableOpacity>
@@ -39,6 +44,25 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
 
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 6,
+        },
+        shadowOpacity: 0.39,
+        shadowRadius: 8.30,
+
+        elevation: 13,
+    },
+    cartHomeUser: {
+        backgroundColor: "white",
+        borderRadius: 10,
+        height: "30%",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        textAlign: "center",
+        fontSize: 30,
         shadowColor: "#000",
         shadowOffset: {
             width: 0,

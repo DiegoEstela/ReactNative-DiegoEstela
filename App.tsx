@@ -5,6 +5,8 @@ import AppLoading from 'expo-app-loading';
 import { StyleSheet, Text, View } from "react-native";
 import Header from "./components/Header";
 import MainNavigator from './navigation';
+import { Provider } from 'react-redux';
+import store from './store';
 
 
 
@@ -18,10 +20,12 @@ const App: FC = () => {
 
   if (!loaded) return <AppLoading />;
   return (
-    <View style={styles.container}>
-      <Header title="EcoTu" />
-      <MainNavigator />
-    </View>
+    <Provider store={store}>
+      <View style={styles.container}>
+        <Header title="EcoTu" />
+        <MainNavigator />
+      </View>
+    </Provider>
   );
 }
 
