@@ -1,18 +1,14 @@
 import React, { FC } from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import colors from "../constants/colors";
-import { useSelector } from "react-redux";
+
 
 
 const Home: FC = ({ navigation, route }) => {
-    const user = useSelector(state => state.user.value);
+
     return (
         <View style={styles.container}>
-            {user.nombre ?
-                <Text style={styles.cartHomeUser} > Bienvenido: {user.nombre}</Text>
-                : <TouchableOpacity style={styles.cartHome}>
-                    <Text style={styles.cartText} > Ingresa con tu usuario</Text>
-                </TouchableOpacity>}
+
             <TouchableOpacity style={styles.cartHome} onPress={() => navigation.navigate("Maps")}>
                 <Text style={styles.cartText} > Map</Text>
             </TouchableOpacity>

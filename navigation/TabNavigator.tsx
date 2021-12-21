@@ -3,7 +3,7 @@ import { StyleSheet, View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import AppNavigator from "./AppNavigator";
 import UserNavigator from "./UserNavigator";
-import NewsNavigator from "./NewsNavigator";
+import PlaceNavigator from "./PlaceNavigator";
 import colors from "../constants/colors";
 import { Fontisto } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
@@ -30,8 +30,8 @@ const TabNavigator: FC = () => {
                     )
                 }} />
             <BottomTabs.Screen
-                name={"News"}
-                component={NewsNavigator}
+                name={"Place"}
+                component={PlaceNavigator}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <View>

@@ -1,17 +1,14 @@
 import React, { useState } from 'react'
 import { StyleSheet, View, TextInput, TouchableOpacity, Text } from 'react-native'
 import colors from '../constants/colors'
-import { useDispatch } from 'react-redux'
-import { UserLogin, UserLogaut } from "../store/slices/user.slice"
-import { useSelector } from 'react-redux'
+
 
 
 
 
 
 const Login = ({ navigation, route }) => {
-  const dispatch = useDispatch()
-  const user = useSelector(state => state.user.value);
+
 
   const [usuario, setUsuario] = useState({
     nombre: "", apellido: "", email: "", contrasena: ""
@@ -28,18 +25,18 @@ const Login = ({ navigation, route }) => {
   const handleSubmit = () => {
 
 
-    dispatch(UserLogin(usuario));
+
     navigation.navigate("Home")
   }
   const handleLogaut = () => {
-    dispatch(UserLogaut());
+    setUsuario("")
   }
 
   return (
 
     <>
 
-      {(user.nombre) ? <TouchableOpacity onPress={handleLogaut} style={styles.buttonClose}>
+      {(usuario) ? <TouchableOpacity onPress={handleLogaut} style={styles.buttonClose}>
         <Text>Cerrar sesion</Text>
       </TouchableOpacity> :
 
